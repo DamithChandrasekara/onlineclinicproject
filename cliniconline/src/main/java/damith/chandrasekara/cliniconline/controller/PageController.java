@@ -9,31 +9,56 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PageController {
 
-	@RequestMapping(value = {"/", "/home", "/index"})
+	@RequestMapping(value = {"/","/home", "/index"})
 	public ModelAndView index() {
 		
 		ModelAndView mav =new ModelAndView("page");
-		mav.addObject("greeting","Welcome to Spring Web MVC");
-		return mav;
-	}
-
-	@RequestMapping(value="/test")
-	public ModelAndView test(@RequestParam(value="greeting", required=false) String greeting) {
-		if(greeting==null) {
-		greeting="Hello There";	
-		}
-		ModelAndView mav =new ModelAndView("page");
-		mav.addObject("greeting",greeting);
+		mav.addObject("title","Home");
+		mav.addObject("UserClickedHome",true);
 		return mav;
 	}
 	
-	@RequestMapping(value="/find/{greeting}")
-	public ModelAndView find(@PathVariable("greeting") String greeting) {
-		if(greeting==null) {
-		greeting="Hello Friend";	
-		}
+	@RequestMapping(value = "/doctors")
+	public ModelAndView doctors() {
+		
 		ModelAndView mav =new ModelAndView("page");
-		mav.addObject("greeting",greeting);
+		mav.addObject("title","Find Doctors");
+		mav.addObject("UserClickedDoctors",true);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/meditest")
+	public ModelAndView services() {
+		
+		ModelAndView mav =new ModelAndView("page");
+		mav.addObject("title","Medical Services");
+		mav.addObject("UserClickeServices",true);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/ambulance")
+	public ModelAndView ambulance() {
+		
+		ModelAndView mav =new ModelAndView("page");
+		mav.addObject("title","Ambulance");
+		mav.addObject("UserClickeAmbulanc",true);
+		return mav;
+	}
+	@RequestMapping(value = "/location")
+	public ModelAndView location() {
+		
+		ModelAndView mav =new ModelAndView("page");
+		mav.addObject("title","Location");
+		mav.addObject("UserClickedLocation",true);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/contact")
+	public ModelAndView contact() {
+		
+		ModelAndView mav =new ModelAndView("page");
+		mav.addObject("title","Contact");
+		mav.addObject("UserClickedLocation",true);
 		return mav;
 	}
 }
